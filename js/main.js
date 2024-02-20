@@ -393,6 +393,16 @@ title.to(path1,{
 
 // portfolio 영역
 
+//link 열기
+
+function openWindow(url, version, event) {
+  var width = (version === 'tablet') ? 780 : 400;
+  var height = 818;
+  window.open(url, '웹표준모바일사이트', 'top=100, left=300, width=' + width + ', height=' + height);
+
+  event.preventDefault();
+}
+
 const listWrElements = document.querySelectorAll('.list-wr');
 const lastListWrElement = listWrElements[listWrElements.length - 1];
 
@@ -630,7 +640,22 @@ function contactAnimation() {
   });
 
 }
-
 contactAnimation();
+
+function copyToClipboard(event, text) {
+  event.preventDefault();
+
+  const input = document.createElement('input');
+  input.value = text;
+  document.body.appendChild(input);
+
+  input.select();
+  document.execCommand('copy');
+
+  document.body.removeChild(input);
+
+  alert('클립보드에 복사되었습니다: ' + text);
+}
+
 
 
